@@ -16,7 +16,6 @@
 
                 </div>
 
-                <div class="panel-body">
 
                     <form:form modelAttribute="statusUpdate"> <!-- NOT ERROR -->
                         <!-- ERROR while validating -->
@@ -27,7 +26,6 @@
 
                         <input type="submit" name="submit" value="Add status" />
                     </form:form>
-                </div>
 
             </div>
 
@@ -39,7 +37,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <c:out value="${latest.text}" />
+                    ${latest.text}
 
 
                 </div>
@@ -49,3 +47,11 @@
         </div>
 
     </div>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: 'textarea',
+        plugins: "link"
+    });
+</script>
