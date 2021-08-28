@@ -8,14 +8,11 @@
 
         <div class="col-md-8 col-md-offset-2">
 
-
             <div class="panel panel-default">
 
                 <div class="panel-heading">
                     <div class="panel-title">Add a status update</div>
-
                 </div>
-
 
                     <form:form modelAttribute="statusUpdate"> <!-- NOT ERROR -->
                         <!-- ERROR while validating -->
@@ -37,9 +34,7 @@
                 </div>
 
                 <div class="panel-body">
-                    ${latest.text}
-
-
+                    ${latestStatusUpdate.text} <!-- or latest -->
                 </div>
 
             </div>

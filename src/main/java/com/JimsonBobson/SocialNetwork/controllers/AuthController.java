@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AuthController {
 
-    @GetMapping("/admin")
+    @GetMapping("/login")
     String admin() {
-        return "admin";
+        return "app.login";
     }
 }

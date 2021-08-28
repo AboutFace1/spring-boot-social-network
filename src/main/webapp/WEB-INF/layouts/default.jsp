@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,6 +40,13 @@
             <a class="navbar-brand" href="/">Spring Boot tutorial</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+
+            <sec:authorize access="!isAuthenticated()">
+            <li><a href="${contextRoot}/login">Login</a></li>
+            </sec:authorize>
+
+            <sec:authorize access="isAuthenticated()">
+            <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="${contextRoot}/">Home</a></li>
                 <li><a href="${contextRoot}/about">about</a></li>
@@ -47,9 +56,15 @@
                 <li><a href="${contextRoot}/addstatus">Add status</a></li>
 
             </ul>
+            </sec:authorize>
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+
+<c:url var="lougoutLink" value="/logout" />
+<form id="logoutForm" method="post" action="${lougoutLink}" >
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
 
 <div class="container">
     <tiles:insertAttribute name="content" />
