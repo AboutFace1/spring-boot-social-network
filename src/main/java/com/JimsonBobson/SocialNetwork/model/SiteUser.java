@@ -1,9 +1,16 @@
 package com.JimsonBobson.SocialNetwork.model;
 
+import com.JimsonBobson.SocialNetwork.validation.PasswordMatch;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
+@PasswordMatch(message = "{register.repeatpassword.mismatch}")
 public class SiteUser {
     @Id
     @Column(name = "id")
@@ -11,10 +18,19 @@ public class SiteUser {
     private Long id;
 
     @Column(name = "email", unique = true)
+    @Email(message = "{register.email.invalid}")
+    @NotBlank
     private String email;
+
+    @Transient
+    @Size(min=5, max=15, message = "{register.password.size}")
+    private String plainPassword;
 
     @Column(name = "password")
     private String password;
+
+    @Transient // Hibernate doesn't save as an object
+    private String repeatPassword;
 
     @Column(name="role", length = 20)
     private String role;
@@ -49,5 +65,22 @@ public class SiteUser {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getPlainPassword() {
+        return plainPassword;
+    }
+
+    public void setPlainPassword(String plainPassword) {
+        this.password = new BCryptPasswordEncoder().encode(plainPassword);
+        this.plainPassword = plainPassword;
+    }
+
+    public String getRepeatPassword() {
+        return repeatPassword;
+    }
+
+    public void setRepeatPassword(String repeatPassword) {
+        this.repeatPassword = repeatPassword;
     }
 }
