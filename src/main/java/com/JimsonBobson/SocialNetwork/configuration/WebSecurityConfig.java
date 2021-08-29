@@ -1,4 +1,4 @@
-package com.JimsonBobson.SocialNetwork.security;
+package com.JimsonBobson.SocialNetwork.configuration;
 
 import com.JimsonBobson.SocialNetwork.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

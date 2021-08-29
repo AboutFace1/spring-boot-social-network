@@ -1,6 +1,7 @@
 package com.JimsonBobson.SocialNetwork.controllers;
 
 import com.JimsonBobson.SocialNetwork.model.SiteUser;
+import com.JimsonBobson.SocialNetwork.service.EmailService;
 import com.JimsonBobson.SocialNetwork.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,17 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private EmailService emailService;
+
     @GetMapping("/login")
     String admin() {
         return "app.login";
+    }
+
+    @GetMapping("/verifyemail")
+    String verifyEmail() {
+        return "app.verifyemail";
     }
 
     @GetMapping("/register")
@@ -28,7 +37,6 @@ public class AuthController {
 
         SiteUser user = new SiteUser();
         modelAndView.setViewName("app.register");
-
         modelAndView.getModel().put("user", user);
 
         return modelAndView;
@@ -41,8 +49,9 @@ public class AuthController {
 
         if(!result.hasErrors()) {
             userService.register(user);
-            modelAndView.setViewName("redirect:/");
+            emailService.sendVerificationEmail(user.getEmail());
 
+            modelAndView.setViewName("redirect:/verifyemail");
         }
 
         return modelAndView;
