@@ -25,6 +25,9 @@ public class EmailService {
     @Value("${mail.enable}")
     private Boolean enable;
 
+    @Value("${site.url}")
+    private String url;
+
     private void send(MimeMessagePreparator preparator) {
         if(enable) {
             mailSender.send(preparator);
@@ -45,10 +48,17 @@ public class EmailService {
         this.templateEngine = templateEngine;
     }
 
-    public void sendVerificationEmail(String emailAddress) {
+    public void sendVerificationEmail(String emailAddress, String token) {
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Context context = new Context();
-        context.setVariable("name", "Bob");
+        context.setVariable("token", token);
+        context.setVariable("url", url);
 
         String emailContent = templateEngine.process("verifyemail", context);
 

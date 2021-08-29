@@ -1,7 +1,6 @@
 package com.JimsonBobson.SocialNetwork.service;
 
-import com.JimsonBobson.SocialNetwork.model.SiteUser;
-import com.JimsonBobson.SocialNetwork.model.UserDao;
+import com.JimsonBobson.SocialNetwork.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -13,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -23,8 +23,16 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private VerificationDao verificationDao;
+
     public void register(SiteUser user) {
         user.setRole("ROLE_USER");
+        userDao.save(user);
+    }
+
+    //updating
+    public void save(SiteUser user) {
         userDao.save(user);
     }
 
@@ -41,6 +49,23 @@ public class UserService implements UserDetailsService {
 
         String password = user.getPassword();
 
-        return new User(email, password, auth);
+        Boolean enabled = user.getEnabled();
+
+        return new User(email, password, enabled, true, true, true, auth);
+    }
+
+    public String createEmailVerification(SiteUser user) {
+        VerificationToken token = new VerificationToken(UUID.randomUUID().toString(), user, TokenType.REGISTRATION);
+        verificationDao.save(token);
+
+        return token.getToken();
+    }
+
+    public VerificationToken getVerificationToken(String token) {
+        return verificationDao.findByToken(token);
+    }
+
+    public void deleteToken(VerificationToken token) {
+        verificationDao.delete(token);
     }
 }

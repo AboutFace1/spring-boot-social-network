@@ -1,12 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" xmlns:th="http://www.w3.org/1999/html">
 
 <th:block xmlns:th="http://www.thymeleaf.org">
 
-<span th:text="'Hello ' + ${name}">Hi there Jim</span>
-
 <p>Thank you for registering to the Spring Boot site</p>
-<p>Please click here <a href="#">here</a>to verify your email address.</p>
+
+<p>Please click here <a th:href="@{${url} + '/confirmregister?t=' + ${token}}">here</a>to verify your email address.</p>
 
 </th:block>
 </html>

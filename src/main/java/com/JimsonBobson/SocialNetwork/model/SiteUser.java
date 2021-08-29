@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 public class SiteUser {
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "email", unique = true)
@@ -28,6 +28,9 @@ public class SiteUser {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "enabled")
+    private Boolean enabled = false;
 
     @Transient // Hibernate doesn't save as an object
     private String repeatPassword;
@@ -83,4 +86,14 @@ public class SiteUser {
     public void setRepeatPassword(String repeatPassword) {
         this.repeatPassword = repeatPassword;
     }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
+
 }
