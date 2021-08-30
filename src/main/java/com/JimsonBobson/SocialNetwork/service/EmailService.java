@@ -50,11 +50,11 @@ public class EmailService {
 
     public void sendVerificationEmail(String emailAddress, String token) {
 
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(20000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         Context context = new Context();
         context.setVariable("token", token);
@@ -73,7 +73,7 @@ public class EmailService {
                 message.setSubject("Please verify your email address");
                 message.setSentDate(new Date());
 
-                message.setText(emailContent);
+                message.setText(emailContent, true);
             }
         };
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.io.FileNotFoundException;
 import java.util.Date;
 
 @Controller
@@ -98,7 +99,7 @@ public class AuthController {
     }
 
     @GetMapping("/register")
-    ModelAndView register(ModelAndView modelAndView) {
+    ModelAndView register(ModelAndView modelAndView) throws FileNotFoundException  {
 
         SiteUser user = new SiteUser();
         modelAndView.setViewName("app.register");
@@ -109,6 +110,7 @@ public class AuthController {
 
     @PostMapping("/register")
     ModelAndView register(ModelAndView modelAndView, @ModelAttribute(value = "user") @Valid SiteUser user, BindingResult result) {
+
 
         modelAndView.setViewName("app.register");
 

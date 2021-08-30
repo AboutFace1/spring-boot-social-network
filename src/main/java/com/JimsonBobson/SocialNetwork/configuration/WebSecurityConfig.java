@@ -22,12 +22,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/about", "/register", "/registrationconfirmed", "/invaliduser", "/expiredtoken")
+                .antMatchers("/", "/about", "/register",
+                        "/registrationconfirmed", "/invaliduser", "/expiredtoken",
+                        "/verifyemail", "/confirmregister")
                 .permitAll()
                 .antMatchers("/js/*", "/css/*", "img/*")
                 .permitAll()
                 .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus")
                 .hasRole("ADMIN")
+                .anyRequest()
+                .denyAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
