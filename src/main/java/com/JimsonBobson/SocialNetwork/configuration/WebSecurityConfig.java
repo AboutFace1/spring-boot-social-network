@@ -26,10 +26,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/registrationconfirmed", "/invaliduser", "/expiredtoken",
                         "/verifyemail", "/confirmregister")
                 .permitAll()
-                .antMatchers("/js/*", "/css/*", "img/*")
+                .antMatchers("/js/*",
+                        "/css/*",
+                        "/img/*")
                 .permitAll()
                 .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus")
                 .hasRole("ADMIN")
+                .antMatchers("/profile", "/edit-profile-about")
+                .authenticated()
                 .anyRequest()
                 .denyAll()
                 .and()

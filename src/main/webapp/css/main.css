@@ -85,3 +85,27 @@ textarea {
     font-size: larger;
     margin-top: 50px;
 }
+
+.profile-about {
+    width: 100%;
+    border: 1px solid gray;
+    padding: 50px;
+    overflow: auto;
+}
+
+.profile-text {
+    font-size: larger;
+}
+
+.profile-image {
+    float: left;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.profile-about-edit {
+    position: inherit;
+    bottom: 0px;
+    right: 50px;
+}

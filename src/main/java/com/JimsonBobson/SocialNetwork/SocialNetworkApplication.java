@@ -1,6 +1,8 @@
 package com.JimsonBobson.SocialNetwork;
 
 import org.apache.catalina.startup.Tomcat;
+import org.owasp.html.HtmlPolicyBuilder;
+import org.owasp.html.PolicyFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -60,6 +62,14 @@ public class SocialNetworkApplication {
 			factory.addErrorPages(new ErrorPage(HttpStatus.FORBIDDEN, "/403"));
 			return factory;
 		}
+	}
+
+	@Bean
+	PolicyFactory getUserHtmlPolicy() {
+		return new HtmlPolicyBuilder()
+				.allowCommonBlockElements()
+				.allowCommonInlineFormattingElements()
+				.toFactory();
 	}
 
 }

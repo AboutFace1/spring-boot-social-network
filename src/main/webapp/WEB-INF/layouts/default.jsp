@@ -47,7 +47,8 @@
             </sec:authorize>
 
             <sec:authorize access="isAuthenticated()">
-            <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
+                <li><a href="${contextRoot}/profile">Profile</a></li>
+                <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
             </sec:authorize>
 
             <sec:authorize access="hasRole('ROLE_ADMIN')">

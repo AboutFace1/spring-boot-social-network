@@ -8,34 +8,29 @@
 
     <div class="col-md-8 col-md-offset-2">
 
+        <div class="errors">
+            <form:errors path="profile.*" />
+        </div>
 
         <div class="panel panel-default">
 
             <div class="panel-heading">
-                <div class="panel-title">Edit status update</div>
+                <div class="panel-title">Edit Your 'About' Text</div>
 
             </div>
 
+            <form:form modelAttribute="profile">
 
-            <form:form modelAttribute="statusUpdate"> <!-- NOT ERROR -->
 
-                <form:input type="hidden" path="id" />
-                <form:input type="hidden" path="added" />
-
-                <div class="errors">
-                    <form:errors path="text"/>
-                </div>
 
                 <div class="form-group">
-                    <form:textarea path="text" name="text" rows="10" cols="50"></form:textarea>
+                    <form:textarea path="about" name="about" rows="10" cols="50"></form:textarea>
                 </div>
 
                 <input type="submit" name="submit" value="Save" />
             </form:form>
 
         </div>
-
-
 
     </div>
 
@@ -44,7 +39,6 @@
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script type="text/javascript">
     tinymce.init({
-        selector: 'textarea',
-        plugins: "link"
+        selector: 'textarea'
     });
 </script>
