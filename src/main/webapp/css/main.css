@@ -109,3 +109,54 @@ textarea {
     bottom: 0px;
     right: 50px;
 }
+
+#profile-photo-status {
+    position: absolute;
+    top: 5px;
+    left: 50px;
+    font-weight: bold;
+    color: green;
+}
+
+#photoUploadForm {
+    display: none;
+}
+
+ul#interestList {
+    border: 1px solid gray;
+}
+
+ul.tagit > li.tagit-choice {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+ul#interestList a.tagit-close > span.text-icon {
+    display: inline;
+    color: yellow;
+    padding-right: 2px;
+    font-size: 1.1em;
+}
+
+ul#interestList a.tagit-close {
+    text-decoration: none;
+}
+
+ul#interestList a.tagit-close:hover {
+    text-decoration: none;
+}
+
+ul#interestList a.tagit-close:hover > span.text-icon {
+    color: blue;
+}
+
+div[role=status] {
+    display: none;
+}
+
+#ui-id-1 {
+    display: none;
+}

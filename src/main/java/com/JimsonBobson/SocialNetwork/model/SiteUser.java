@@ -38,6 +38,17 @@ public class SiteUser {
     @Column(name="role", length = 20)
     private String role;
 
+    public SiteUser() {
+
+    }
+
+    public SiteUser(String email, String password) {
+        this.email = email;
+        this.plainPassword = password;
+        this.repeatPassword = password;
+        this.enabled = true;
+    }
+
     public Long getId() {
         return id;
     }
