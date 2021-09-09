@@ -22,9 +22,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/about", "/register",
+                .antMatchers("/", "/search", "/about", "/register",
                         "/registrationconfirmed", "/invaliduser", "/expiredtoken",
-                        "/verifyemail", "/confirmregister")
+                        "/verifyemail", "/confirmregister", "/profilephoto/*")
                 .permitAll()
                 .antMatchers("/js/*",
                         "/css/*",
@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus")
                 .hasRole("ADMIN")
-                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/upload-profile-photo", "/profilephoto/*" +
+                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/upload-profile-photo",
                         "/save-interest", "/delete-interest")
                 .authenticated()
                 .anyRequest()

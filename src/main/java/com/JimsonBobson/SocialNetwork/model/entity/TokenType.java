@@ -1,4 +1,4 @@
-package com.JimsonBobson.SocialNetwork.model;
+package com.JimsonBobson.SocialNetwork.model.entity;
 
 public enum TokenType {
     REGISTRATION,

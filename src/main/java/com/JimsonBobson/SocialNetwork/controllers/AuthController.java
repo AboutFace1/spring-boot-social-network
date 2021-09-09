@@ -1,7 +1,7 @@
 package com.JimsonBobson.SocialNetwork.controllers;
 
-import com.JimsonBobson.SocialNetwork.model.SiteUser;
-import com.JimsonBobson.SocialNetwork.model.VerificationToken;
+import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
+import com.JimsonBobson.SocialNetwork.model.entity.VerificationToken;
 import com.JimsonBobson.SocialNetwork.service.EmailService;
 import com.JimsonBobson.SocialNetwork.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,12 +1,11 @@
 package com.JimsonBobson.SocialNetwork.service;
 
-import com.JimsonBobson.SocialNetwork.model.StatusUpdate;
-import com.JimsonBobson.SocialNetwork.model.StatusUpdateDao;
+import com.JimsonBobson.SocialNetwork.model.entity.StatusUpdate;
+import com.JimsonBobson.SocialNetwork.model.repository.StatusUpdateDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,4 +1,4 @@
-package com.JimsonBobson.SocialNetwork.model;
+package com.JimsonBobson.SocialNetwork.model.entity;
 
 import com.JimsonBobson.SocialNetwork.validation.PasswordMatch;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -19,7 +20,7 @@ public class SiteUser {
 
     @Column(name = "email", unique = true)
     @Email(message = "{register.email.invalid}")
-    @NotBlank
+    @NotBlank(message = "Email field should not be empty")
     private String email;
 
     @Transient
@@ -32,6 +33,16 @@ public class SiteUser {
     @Column(name = "enabled")
     private Boolean enabled = false;
 
+    @NotNull
+    @Column(name = "firstname", length = 20)
+    @Size(min=2, max=20, message = "{register.firstname.size}")
+    private String firstname;
+
+    @NotNull
+    @Column(name = "surname", length = 25)
+    @Size(min=2, max=25, message = "{register.surname.size}")
+    private String surname;
+
     @Transient // Hibernate doesn't save as an object
     private String repeatPassword;
 
@@ -42,11 +53,13 @@ public class SiteUser {
 
     }
 
-    public SiteUser(String email, String password) {
+    public SiteUser(String email, String password, String firstname, String surname) {
         this.email = email;
         this.plainPassword = password;
         this.repeatPassword = password;
         this.enabled = true;
+        this.firstname = firstname;
+        this.surname = surname;
     }
 
     public Long getId() {
@@ -106,5 +119,34 @@ public class SiteUser {
         this.enabled = enabled;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
 
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return "SiteUser{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", plainPassword='" + plainPassword + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", firstname='" + firstname + '\'' +
+                ", surname='" + surname + '\'' +
+                ", repeatPassword='" + repeatPassword + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

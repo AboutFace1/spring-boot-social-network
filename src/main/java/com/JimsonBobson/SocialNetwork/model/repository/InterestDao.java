@@ -1,5 +1,6 @@
-package com.JimsonBobson.SocialNetwork.model;
+package com.JimsonBobson.SocialNetwork.model.repository;
 
+import com.JimsonBobson.SocialNetwork.model.entity.Interest;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

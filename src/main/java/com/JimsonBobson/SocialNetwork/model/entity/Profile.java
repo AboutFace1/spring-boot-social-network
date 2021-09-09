@@ -1,5 +1,6 @@
-package com.JimsonBobson.SocialNetwork.model;
+package com.JimsonBobson.SocialNetwork.model.entity;
 
+import com.JimsonBobson.SocialNetwork.model.dto.FileInfo;
 import org.owasp.html.PolicyFactory;
 
 import javax.persistence.*;
@@ -147,9 +148,14 @@ public class Profile {
 
     @Override
     public String toString() {
-        return "Profile [id=" + id + ", user=" + user + ", about=" + about + ", photoDirectory=" + photoDirectory
-                + ", photoName=" + photoName + ", photoExtension=" + photoExtension + ", interests=" + interests + "]";
+        return "Profile{" +
+                "id=" + id +
+                ", user=" + user +
+                ", about='" + about + '\'' +
+                ", photoDirectory='" + photoDirectory + '\'' +
+                ", photoName='" + photoName + '\'' +
+                ", photoExtension='" + photoExtension + '\'' +
+                ", interests=" + interests +
+                '}';
     }
-
-
 }

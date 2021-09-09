@@ -1,4 +1,4 @@
-package com.JimsonBobson.SocialNetwork.model;
+package com.JimsonBobson.SocialNetwork.model.dto;
 
 public class FileInfo {
     private String basename;

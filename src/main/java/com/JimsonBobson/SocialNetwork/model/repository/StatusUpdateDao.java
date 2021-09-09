@@ -1,6 +1,6 @@
-package com.JimsonBobson.SocialNetwork.model;
+package com.JimsonBobson.SocialNetwork.model.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import com.JimsonBobson.SocialNetwork.model.entity.StatusUpdate;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

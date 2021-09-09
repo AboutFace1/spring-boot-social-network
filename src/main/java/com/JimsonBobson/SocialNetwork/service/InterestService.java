@@ -1,11 +1,9 @@
 package com.JimsonBobson.SocialNetwork.service;
 
-import com.JimsonBobson.SocialNetwork.model.Interest;
-import com.JimsonBobson.SocialNetwork.model.InterestDao;
+import com.JimsonBobson.SocialNetwork.model.entity.Interest;
+import com.JimsonBobson.SocialNetwork.model.repository.InterestDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
 
 @Service
 public class InterestService {

@@ -3,10 +3,10 @@ package com.JimsonBobson.SocialNetwork.controllers;
 
 import com.JimsonBobson.SocialNetwork.exceptions.ImageTooSmallException;
 import com.JimsonBobson.SocialNetwork.exceptions.InvalidFileException;
-import com.JimsonBobson.SocialNetwork.model.FileInfo;
-import com.JimsonBobson.SocialNetwork.model.Interest;
-import com.JimsonBobson.SocialNetwork.model.Profile;
-import com.JimsonBobson.SocialNetwork.model.SiteUser;
+import com.JimsonBobson.SocialNetwork.model.dto.FileInfo;
+import com.JimsonBobson.SocialNetwork.model.entity.Interest;
+import com.JimsonBobson.SocialNetwork.model.entity.Profile;
+import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
 import com.JimsonBobson.SocialNetwork.service.FileService;
 import com.JimsonBobson.SocialNetwork.service.InterestService;
 import com.JimsonBobson.SocialNetwork.service.ProfileService;
@@ -197,7 +197,7 @@ public class ProfileController {
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
 
-    @GetMapping("/profilephoto/{id}")
+    @GetMapping("/profilephoto/{id}") // idk why doesnt work
     @ResponseBody
     ResponseEntity<InputStreamResource> servePhoto(@PathVariable Long id) throws IOException {
         SiteUser user = userService.get(id);

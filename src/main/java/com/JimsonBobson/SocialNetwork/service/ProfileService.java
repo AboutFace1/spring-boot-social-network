@@ -1,10 +1,9 @@
 package com.JimsonBobson.SocialNetwork.service;
 
-import com.JimsonBobson.SocialNetwork.model.Profile;
-import com.JimsonBobson.SocialNetwork.model.ProfileDao;
-import com.JimsonBobson.SocialNetwork.model.SiteUser;
+import com.JimsonBobson.SocialNetwork.model.entity.Profile;
+import com.JimsonBobson.SocialNetwork.model.repository.ProfileDao;
+import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service

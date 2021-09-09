@@ -53,6 +53,11 @@ textarea {
     font-size: larger;
 }
 
+.status-row {
+    margin-top: 4em;
+    margin-bottom: 6em;
+}
+
 .edit-links {
     margin-top: 10px;
 }
@@ -159,4 +164,28 @@ div[role=status] {
 
 #ui-id-1 {
     display: none;
+}
+
+body {
+    zoom: 115%;
+}
+
+#search-button {
+    background-color: orange;
+    text-shadow: 1px 1px 0px #888888;
+}
+
+#search-button:hover {
+    background-color: orange;
+    color: yellow;
+}
+
+/* List of results */
+
+.results-photo {
+    display: inline-block;
+}
+
+.results-details {
+    display: inline-block;
 }

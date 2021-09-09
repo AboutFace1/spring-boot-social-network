@@ -1,7 +1,7 @@
 package com.JimsonBobson.SocialNetwork.controllers;
 
 
-import com.JimsonBobson.SocialNetwork.model.StatusUpdate;
+import com.JimsonBobson.SocialNetwork.model.entity.StatusUpdate;
 import com.JimsonBobson.SocialNetwork.service.StatusUpdateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

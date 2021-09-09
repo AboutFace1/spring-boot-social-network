@@ -1,6 +1,6 @@
 package com.JimsonBobson.SocialNetwork.validation;
 
-import com.JimsonBobson.SocialNetwork.model.SiteUser;
+import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

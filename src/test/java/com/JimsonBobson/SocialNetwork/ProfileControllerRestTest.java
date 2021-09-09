@@ -1,8 +1,8 @@
 package com.JimsonBobson.SocialNetwork;
 
-import com.JimsonBobson.SocialNetwork.model.Interest;
-import com.JimsonBobson.SocialNetwork.model.Profile;
-import com.JimsonBobson.SocialNetwork.model.SiteUser;
+import com.JimsonBobson.SocialNetwork.model.entity.Interest;
+import com.JimsonBobson.SocialNetwork.model.entity.Profile;
+import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
 import com.JimsonBobson.SocialNetwork.service.InterestService;
 import com.JimsonBobson.SocialNetwork.service.ProfileService;
 import com.JimsonBobson.SocialNetwork.service.UserService;

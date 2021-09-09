@@ -1,6 +1,10 @@
 package com.JimsonBobson.SocialNetwork.service;
 
-import com.JimsonBobson.SocialNetwork.model.*;
+import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
+import com.JimsonBobson.SocialNetwork.model.entity.TokenType;
+import com.JimsonBobson.SocialNetwork.model.entity.VerificationToken;
+import com.JimsonBobson.SocialNetwork.model.repository.UserDao;
+import com.JimsonBobson.SocialNetwork.model.repository.VerificationDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;

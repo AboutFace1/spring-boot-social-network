@@ -1,4 +1,4 @@
-package com.JimsonBobson.SocialNetwork.model;
+package com.JimsonBobson.SocialNetwork.model.entity;
 
 import javax.persistence.*;
 import java.util.Calendar;

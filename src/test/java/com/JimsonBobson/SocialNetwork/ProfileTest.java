@@ -1,8 +1,8 @@
 package com.JimsonBobson.SocialNetwork;
 
-import com.JimsonBobson.SocialNetwork.model.Interest;
-import com.JimsonBobson.SocialNetwork.model.Profile;
-import com.JimsonBobson.SocialNetwork.model.SiteUser;
+import com.JimsonBobson.SocialNetwork.model.entity.Interest;
+import com.JimsonBobson.SocialNetwork.model.entity.Profile;
+import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
 import com.JimsonBobson.SocialNetwork.service.InterestService;
 import com.JimsonBobson.SocialNetwork.service.ProfileService;
 import com.JimsonBobson.SocialNetwork.service.UserService;
@@ -33,9 +33,9 @@ public class ProfileTest {
     private InterestService interestService;
 
     private SiteUser[] users = {
-            new SiteUser("dfskldf@mail.ru", "113113"),
-            new SiteUser("dfsklddf@mail.ru", "10002000"),
-            new SiteUser("dfskdjdf@mail.ru", "20002000"),
+            new SiteUser("dfskldf@mail.ru", "113113", "dfsdfsfd", "dfsdf"),
+            new SiteUser("dfsklddf@mail.ru", "10002000", "dfdf", "dfdfsdfs"),
+            new SiteUser("dfskdjdf@mail.ru", "20002000", "dgfsdfsld", "dfsdfsdfs"),
     };
 
     String[][] interests = {

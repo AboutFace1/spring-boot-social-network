@@ -2,7 +2,7 @@ package com.JimsonBobson.SocialNetwork.service;
 
 import com.JimsonBobson.SocialNetwork.exceptions.ImageTooSmallException;
 import com.JimsonBobson.SocialNetwork.exceptions.InvalidFileException;
-import com.JimsonBobson.SocialNetwork.model.FileInfo;
+import com.JimsonBobson.SocialNetwork.model.dto.FileInfo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,10 +13,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Locale;
 import java.util.Random;
 
 @Service

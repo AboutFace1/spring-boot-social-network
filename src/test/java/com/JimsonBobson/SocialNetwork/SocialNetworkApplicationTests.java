@@ -1,7 +1,7 @@
 package com.JimsonBobson.SocialNetwork;
 
-import com.JimsonBobson.SocialNetwork.model.StatusUpdate;
-import com.JimsonBobson.SocialNetwork.model.StatusUpdateDao;
+import com.JimsonBobson.SocialNetwork.model.entity.StatusUpdate;
+import com.JimsonBobson.SocialNetwork.model.repository.StatusUpdateDao;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 import java.util.Calendar;
-import java.util.Optional;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
