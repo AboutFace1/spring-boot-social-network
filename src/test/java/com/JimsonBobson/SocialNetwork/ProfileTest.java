@@ -11,15 +11,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.transaction.Transactional;
 import java.util.HashSet;
+import java.util.Random;
+import java.util.stream.Collectors;
 
-@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
 public class ProfileTest {
 
@@ -49,6 +50,9 @@ public class ProfileTest {
         for (int i = 0; i<users.length; i++) {
             SiteUser user = users[i];
             String[] interestArray = interests[i];
+
+            String name = new Random().ints(10, 0, 10).mapToObj(Integer::toString).collect(Collectors.joining(""));
+            user.setEmail(name + "@example.com");
 
             userService.register(user);
 

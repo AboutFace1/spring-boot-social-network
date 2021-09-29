@@ -56,12 +56,13 @@ public class StatuSupdateController {
     }
 
     @GetMapping("/viewstatus")
-    public ModelAndView viewStatus(ModelAndView modelAndView, @RequestParam(name = "page", defaultValue = "1") int pageNumber) {
+    public ModelAndView viewStatus(ModelAndView modelAndView, @RequestParam(name = "p", defaultValue = "1") int pageNumber) {
 
         Page<StatusUpdate> page = statusUpdateService.getPage(pageNumber);
 
-        modelAndView.setViewName("app.viewStatus");
         modelAndView.getModel().put("page", page);
+
+        modelAndView.setViewName("app.viewStatus");
 
         return modelAndView;
     }

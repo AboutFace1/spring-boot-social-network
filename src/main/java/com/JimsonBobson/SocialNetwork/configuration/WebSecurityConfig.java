@@ -22,25 +22,53 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/search", "/about", "/register",
-                        "/registrationconfirmed", "/invaliduser", "/expiredtoken",
-                        "/verifyemail", "/confirmregister", "/profilephoto/*")
+                .antMatchers(
+                        "/",
+                        "/search",
+                        "/about",
+                        "/register",
+                        "/registrationconfirmed",
+                        "/invaliduser",
+                        "/expiredtoken",
+                        "/verifyemail",
+                        "/confirmregister",
+                        "/profilephoto/*")
                 .permitAll()
-                .antMatchers("/js/*",
+                .antMatchers(
+                        "/js/*",
                         "/css/*",
                         "/img/*")
                 .permitAll()
-                .antMatchers("/addstatus", "/editstatus", "/deletestatus", "/viewstatus")
+                .antMatchers("/addstatus",
+                        "/editstatus",
+                        "/deletestatus",
+                        "/viewstatus")
                 .hasRole("ADMIN")
-                .antMatchers("/profile", "/profile/*", "/edit-profile-about", "/upload-profile-photo",
-                        "/save-interest", "/delete-interest")
+                .antMatchers(
+                        "/webjars/**",
+                        "/chat/**",
+                        "/profile",
+                        "/profile/*",
+                        "/edit-profile-about",
+                        "/upload-profile-photo",
+                        "/save-interest",
+                        "/delete-interest",
+                        "/chatview/*",
+                        "/messages",
+                        "/queue/**",
+                        "/app/**",
+                        "/chat/**",
+                        "/messagecount",
+                        "/conversation/*",
+                        "/markread"
+                )
                 .authenticated()
                 .anyRequest()
                 .denyAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/", true)
                 .permitAll()
                 .and()
                 .logout()

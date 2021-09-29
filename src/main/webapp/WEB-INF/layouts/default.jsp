@@ -39,6 +39,12 @@
     <script
             src="${contextRoot}/js/tag-it.min.js"></script>
 
+    <script src="${contextRoot}/js/connectionmanager.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+    <tiles:insertAttribute name="chatviewscript" ignore="true"></tiles:insertAttribute>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -69,7 +75,7 @@
             </sec:authorize>
 
             <sec:authorize access="isAuthenticated()">
-                <li><a href="${contextRoot}/profile">Profile</a></li>
+                <li><a href="${contextRoot}/profile"><sec:authentication property="principal.firstname" />'s Profile</a></li>
                 <li><a href="javascript:$('#logoutForm').submit();">Logout</a></li>
             </sec:authorize>
 
@@ -108,6 +114,11 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
+<sec:authorize access="isAuthenticated()">
+    <script>
+        connectionManager.connect();
+    </script>
+</sec:authorize>
 
 
 </body>

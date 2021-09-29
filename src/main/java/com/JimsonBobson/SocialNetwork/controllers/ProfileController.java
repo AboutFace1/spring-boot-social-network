@@ -108,10 +108,14 @@ public class ProfileController {
 
         SiteUser user = getUser();
 
+        String firstname = user.getFirstname();
+        String surname = user.getSurname();
+
         ModelAndView modelAndView = showProfile(user);
 
         modelAndView.getModel().put("ownProfile", true);
-
+        modelAndView.getModel().put("firstname", firstname);
+        modelAndView.getModel().put("surname", surname);
 
         return modelAndView;
     }
@@ -121,9 +125,14 @@ public class ProfileController {
 
         SiteUser user = userService.get(id);
 
+        String firstname = user.getFirstname();
+        String surname = user.getSurname();
+
         ModelAndView modelAndView = showProfile(user);
 
         modelAndView.getModel().put("ownProfile", false);
+        modelAndView.getModel().put("firstname", firstname);
+        modelAndView.getModel().put("surname", surname);
 
         return modelAndView;
     }

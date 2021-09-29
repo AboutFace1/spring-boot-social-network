@@ -3,6 +3,7 @@ package com.JimsonBobson.SocialNetwork.service;
 import com.JimsonBobson.SocialNetwork.model.entity.StatusUpdate;
 import com.JimsonBobson.SocialNetwork.model.repository.StatusUpdateDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class StatusUpdateService {
 
-    private final static int PAGESIZE = 10;
+    @Value("${status.pagesize}")
+    private int pageSize;
 
     @Autowired
     private StatusUpdateDao statusUpdateDao;
@@ -25,7 +27,7 @@ public class StatusUpdateService {
     }
 
     public Page<StatusUpdate> getPage(int pageNumber) {
-        PageRequest request = PageRequest.of(pageNumber-1, PAGESIZE, Sort.Direction.DESC, "added");
+        PageRequest request = PageRequest.of(pageNumber-1, pageSize, Sort.Direction.DESC, "added");
 
         return statusUpdateDao.findAll(request);
     }

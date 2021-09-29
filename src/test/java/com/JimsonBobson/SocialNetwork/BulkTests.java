@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,11 +25,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@TestPropertySource(locations = "classpath:test.properties")
 //@Transactional
 public class BulkTests {
+
+    private final static int NUM_USERS = 400;
 
     private static final String namesFile = "/data/names.txt";
     private static final String interestsFile = "/data/hobbies.txt";
@@ -42,6 +44,10 @@ public class BulkTests {
 
     @Autowired
     private InterestService interestService;
+
+    private SiteUser[] testUsers = {
+            new SiteUser("pexaev@mail.ru", "sometest", "test", "test")
+    };
 
     private List<String> loadFile(String filename, int maxLength) throws IOException {
         File filePath = new ClassPathResource(filename).getFile();
@@ -60,15 +66,40 @@ public class BulkTests {
         return items;
     }
 
+    @Test
+    public void createSpecificUsers() {
+        for (SiteUser user: testUsers) {
+
+            SiteUser existingUser = userService.get(user.getEmail());
+
+            if (existingUser != null) {
+                continue;
+            }
+
+            user.setEnabled(true);
+
+            String role = user.getRole();
+            if (role == null) {
+                user.setRole("ROLE_USER");
+            }
+
+            userService.save(user);
+
+            user = userService.get(user.getEmail());
+
+            Profile profile = new Profile(user);
+            profileService.save(profile);
+        }
+    }
 
     @Test
-    public void createTestData() throws IOException {
+    public void createTestUsers() throws IOException {
         Random random = new Random();
 
         List<String> names = loadFile(namesFile, 25);
         List<String> interests = loadFile(interestsFile, 25);
 
-        for (int numUsers=0; numUsers<4000; numUsers++) {
+        for (int numUsers=0; numUsers<NUM_USERS; numUsers++) {
             String firstname = names.get(random.nextInt(names.size()));
             String surname = names.get(random.nextInt(names.size()));
 
@@ -108,3 +139,5 @@ public class BulkTests {
         Assert.assertTrue(true);
     }
 }
+
+

@@ -1,10 +1,8 @@
 package com.JimsonBobson.SocialNetwork;
 
-import org.apache.catalina.startup.Tomcat;
 import org.owasp.html.HtmlPolicyBuilder;
 import org.owasp.html.PolicyFactory;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;
@@ -15,19 +13,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 
 @SpringBootApplication
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
-public class SocialNetworkApplication {
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SocialNetworkApplication.class, args);
+		SpringApplication.run(App.class, args);
 	}
 
 	@Bean
@@ -60,7 +55,7 @@ public class SocialNetworkApplication {
 		@Bean
 		public ConfigurableServletWebServerFactory webServerFactory() {
 			TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
-
+			
 			factory.addErrorPages(new ErrorPage(HttpStatus.FORBIDDEN, "/403"));
 			return factory;
 		}

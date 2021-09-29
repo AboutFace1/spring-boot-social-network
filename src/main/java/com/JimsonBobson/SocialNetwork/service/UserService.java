@@ -1,5 +1,6 @@
 package com.JimsonBobson.SocialNetwork.service;
 
+import com.JimsonBobson.SocialNetwork.model.dto.SpringUser;
 import com.JimsonBobson.SocialNetwork.model.entity.SiteUser;
 import com.JimsonBobson.SocialNetwork.model.entity.TokenType;
 import com.JimsonBobson.SocialNetwork.model.entity.VerificationToken;
@@ -52,10 +53,11 @@ public class UserService implements UserDetailsService {
         List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList(user.getRole());
 
         String password = user.getPassword();
+        String firstname = user.getFirstname();
 
         Boolean enabled = user.getEnabled();
 
-        return new User(email, password, enabled, true, true, true, auth);
+        return new SpringUser(firstname, email, password, enabled, true, true, true, auth);
     }
 
     public String createEmailVerification(SiteUser user) {
@@ -79,5 +81,11 @@ public class UserService implements UserDetailsService {
 
     public SiteUser get(Long id) {
         return userDao.findById(id).orElse(null);
+    }
+
+    public String getUserName(Long chatWithUserID) {
+        SiteUser user = userDao.findById(chatWithUserID).orElse(null);
+
+        return user.getFirstname() + " " + user.getSurname();
     }
 }
