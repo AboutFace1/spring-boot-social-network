@@ -110,7 +110,7 @@ public class ChatController {
         simpMessagingTemplate.convertAndSendToUser(fromUsername, returnReceiptQueue, message);
 
         message.setFrom(fromUser.getFirstname() + " " + fromUser.getSurname());
-
+        
         message.setIsReply(true);
         simpMessagingTemplate.convertAndSendToUser(toUsername, toUserQueue, message);
 

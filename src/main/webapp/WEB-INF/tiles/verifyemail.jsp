@@ -1,19 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 29.08.2021
-  Time: 6:52
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <div class="row">
 
-    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        A verification email has been sent to your email address. Please check your inbox.
+    <div class="verify-email-message  col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <c:out value="${message}"/>
     </div>
 </div>

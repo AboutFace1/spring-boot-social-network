@@ -93,7 +93,7 @@
     sizeChatWindow();
     $(window).resize(sizeChatWindow);
 
-        connectionManager.addSubscription("${inboundDestination}",
+    connectionManager.addSubscription("${inboundDestination}",
         newMessageReceived);
     $('#chat-send-button').click(function() {
         sendMessage(connectionManager);

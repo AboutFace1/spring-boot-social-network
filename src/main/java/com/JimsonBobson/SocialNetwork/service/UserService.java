@@ -36,7 +36,6 @@ public class UserService implements UserDetailsService {
         userDao.save(user);
     }
 
-    //updating
     public void save(SiteUser user) {
         userDao.save(user);
     }
@@ -60,7 +59,7 @@ public class UserService implements UserDetailsService {
         return new SpringUser(firstname, email, password, enabled, true, true, true, auth);
     }
 
-    public String createEmailVerification(SiteUser user) {
+    public String createEmailVerificationToken(SiteUser user) {
         VerificationToken token = new VerificationToken(UUID.randomUUID().toString(), user, TokenType.REGISTRATION);
         verificationDao.save(token);
 
@@ -87,5 +86,9 @@ public class UserService implements UserDetailsService {
         SiteUser user = userDao.findById(chatWithUserID).orElse(null);
 
         return user.getFirstname() + " " + user.getSurname();
+    }
+
+    public Iterable<SiteUser> getAll() {
+        return userDao.findAll();
     }
 }

@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface VerificationDao extends CrudRepository<VerificationToken, Long> {
     VerificationToken findByToken(String token);
+    void deleteByUserId(Long id);
 }

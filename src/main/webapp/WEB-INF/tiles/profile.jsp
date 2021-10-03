@@ -53,11 +53,6 @@
                         <a href="#" id="uploadLink">Upload photo</a>
                     </c:if>
                 </div>
-                <div class="profile-about-edit text-center">
-                    <c:if test="${ownProfile == true}">
-                        <a href="${editProfileAbout}">Edit</a>
-                    </c:if>
-                </div>
             </div>
 
 
@@ -77,6 +72,11 @@
             </div>
         </div>
 
+        <div class="profile-about-edit">
+            <c:if test="${ownProfile == true}">
+                <a href="${editProfileAbout}">edit</a>
+            </c:if>
+        </div>
 
         <div class="profile-about-message">
             <c:if test="${ownProfile == false}">

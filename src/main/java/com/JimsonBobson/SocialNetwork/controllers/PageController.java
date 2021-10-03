@@ -38,11 +38,14 @@ public class PageController {
         return modelAndView;
     }
 
+    @GetMapping("/tos")
+    String termsOfService() {
+        return "app.tos";
+    }
 
     @GetMapping("/about")
     public String about() {
         return "app.about";
     }
-
 
 }
